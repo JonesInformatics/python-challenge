@@ -36,7 +36,7 @@ with open(file_to_load) as revenue_data:
         current_row_revenue = int(row[1])
         total_revenue += current_row_revenue  # DEBUG, int, strg error
 
-        # setting if else statement to account for first row, i ncalculating average monthly change
+        # setting if else statement to account for first row, in calculating average monthly change
         if pre_revenue == 0:
             diff_revenue = 0
 
@@ -46,30 +46,31 @@ with open(file_to_load) as revenue_data:
         total_diff_revenue += diff_revenue
         pre_revenue = current_row_revenue
 
+        if diff_revenue > greatest_increase[1]:
+            greatest_increase[0] = row[0]
+            greatest_increase[1]= diff_revenue
+            
+        if diff_revenue < greatest_decrease[1]:
+            greatest_decrease[0] = row[0]
+            greatest_decrease[1]= diff_revenue
+
 ave_change_rev = total_diff_revenue/(total_months -1)
 
+output = (
+f"\nFinancial Analysis\n"
+f"=================\n"
+f"Total Months:   {total_months}\n"
+f"Total Revenue:  {total_revenue}\n"
+f"Average Monthly Change: {ave_change_rev}\n"
+f"Greatest Increase in revenue: {greatest_increase[0]} ${greatest_increase[1]}\n"
+f"Greatest Decrease in revenue: {greatest_decrease[0]} ${greatest_decrease[1]}\n"
+)
+print(output)
+with open(file_to_output, 'w')as file_object:
+    file_object.write(output)
 
-print(ave_change_rev)
-print(pre_revenue)
-print(total_months)
-print(total_revenue)
- 
-print("Financial Analysis")
-print("..................")
-print(f"Total Months:   {total_months}")
-print(f"Total Revenue:  {total_revenue}")
-print(f"Average Monthly Change: {ave_change_rev}")
 
 
-
-
-#print total month outside of for loop
-
-# The average of the changes in "Profit/Losses" over the entire period
-
-# The greatest increase in profits (date and amount) over the entire period
-
-# The greatest decrease in losses (date and amount) over the entire period
 
 
         
