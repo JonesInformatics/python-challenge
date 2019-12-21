@@ -8,7 +8,9 @@ file_to_output = os.path.join( "analysis", "budget_analysis.txt")
 # setting variables
 total_votes = [] # integer
 candidate_names = [] #string
-num_votes_canidates = [] # int
+num_votes_canidates = []
+x = 0
+store_vote_counts = []
 
 
 #opening file
@@ -22,15 +24,18 @@ with open(file_to_load) as voting_data:
         total_votes.append(row[0])
         candidate_names.append(row[2])
 
+    print (len(total_votes))
+
+    
+    for cand in (set(candidate_names)):
+        x = 0
+        voting_data.seek(1)
+        reader=csv.reader(voting_data)
+        for row in reader:
+            if row[2] == cand:
+                x += 1
 
 
-print("Election Results")
-print(f"Total Number of Votes : {len(total_votes)}")
-print(set(candidate_names))
 
-
-
-
-
-
-
+        print(x)
+        print(cand)
