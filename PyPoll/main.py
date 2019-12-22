@@ -3,7 +3,7 @@ import csv, os
 # setting variables to hold data
 
 file_to_load = os.path.join( "Resources", "election_data.csv")
-file_to_output = os.path.join( "analysis", "budget_analysis.txt")
+file_to_output = os.path.join( "analysis", "elections_results.txt")
 
 # setting variables
 total_votes = [] # integer
@@ -39,3 +39,19 @@ with open(file_to_load) as voting_data:
 
         print(x)
         print(cand)
+        print(x/(len(total_votes)))
+
+    output = (
+        f"\nElection Results\n"
+        f"\nTotal Votes {len(total_votes)}\n"
+        f"\n{cand} {x}\n"
+        f"\n{cand} {x}\n"
+        f"\n{cand} {x}\n"
+    )
+
+    print(output)
+    with open(file_to_output, 'w')as file_object:
+        file_object.write(output)
+
+
+    
