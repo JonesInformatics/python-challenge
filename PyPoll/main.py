@@ -24,8 +24,7 @@ with open(file_to_load) as voting_data:
         total_votes.append(row[0])
         candidate_names.append(row[2])
 
-    print (len(total_votes))
-
+    
     
     for cand in (set(candidate_names)):
         x = 0
@@ -37,16 +36,20 @@ with open(file_to_load) as voting_data:
 
 
 
-        print(x)
-        print(cand)
-        print(x/(len(total_votes)))
+        # print(x)
+        # print(cand)
+        # print(x/(len(total_votes)))
 
     output = (
-        f"\nElection Results\n"
-        f"\nTotal Votes {len(total_votes)}\n"
-        f"\n{cand} {x}\n"
-        f"\n{cand} {x}\n"
-        f"\n{cand} {x}\n"
+        f"Election Results\n"
+        f"================"
+        f"\nTotal Votes: {len(total_votes)}\n"
+        f"================"
+        f"\n{cand} ({x})\n"
+        f"\n{cand} ({x})\n"
+        f"\n{cand} ({x})\n"
+        f"================"
+        f"\nWinner:{cand} \n"
     )
 
     print(output)
