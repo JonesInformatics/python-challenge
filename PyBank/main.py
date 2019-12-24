@@ -34,7 +34,7 @@ with open(file_to_load) as revenue_data:
         
         # finding total revenue
         current_row_revenue = int(row[1])
-        total_revenue += current_row_revenue  # DEBUG, int, strg error
+        total_revenue += current_row_revenue  
 
         # setting if else statement to account for first row, in calculating average monthly change
         if pre_revenue == 0:
